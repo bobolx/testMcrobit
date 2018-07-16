@@ -1,0 +1,12 @@
+{
+    "name": "TEST",
+    "dependencies": {
+        "core": "*"
+    },
+    "description": "测试",
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ]
+}
