@@ -4,7 +4,9 @@
         "core": "*"
     },
     "description": "测试",
+    "license": "MIT",
     "files": [
         "main.ts"
-    ]
+    ],
+    "public": true
 }
