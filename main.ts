@@ -1,29 +1,25 @@
 /**
- * Types of tropical fruit
+ * Types of motor direction
  */
-enum TropicalFruit {
-    Banana = 0,
-    Pinapple = 1,
-    Coconut = 2
+enum MotorDirection {
+    '停止' = 0,
+    '前进' = 1,
+    '后退' = 2,
+    '左转' = 3,
+    '右转' = 4
 }
 
 /**
- * Pick some fruit and peel it.
+ * 设置电机按方向移动或停止
  */
 //% weight=70 icon="\uf185" color=#EC7505
-namespace TEST {
+namespace Motor {
     /**
-     * Pick a fruit
+     * 操作电机
      */
-    //% blockId=tropic_pick block="pick a %fruit"
-    export function pick(fruit: TropicalFruit): boolean {
+    //% blockId=motor_move block="电机驱动 %dire"
+    export function move(dire: MotorDirection): boolean {
         return true;
     }
-    /**
-     * Peel the fruit if possible
-     */
-    //% blockId=tropic_peel block="peel a %fruit"
-    export function peel(fruit: TropicalFruit): boolean {
-        return (fruit == TropicalFruit.Banana);
-    }
+
 }

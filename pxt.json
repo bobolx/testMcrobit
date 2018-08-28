@@ -1,9 +1,9 @@
 {
-    "name": "TEST",
+    "name": "Motor",
     "dependencies": {
         "core": "*"
     },
-    "description": "测试",
+    "description": "电机",
     "license": "MIT",
     "files": [
         "main.ts"
