@@ -31,9 +31,6 @@ enum LedPosition {
 }
 
 
-/**
- * 设置电机按方向移动或停止
- */
 //% weight=70 icon="\uf0e7" color=#1B80C4
 namespace CooCoo {
     //microbit与coocoo的点击使用哪个pin连接的，相当于地址，这个需要确定是什么
@@ -93,6 +90,7 @@ namespace CooCoo {
      * 设置LED 选择颜色
      */
     //% blockId=coocoo_color block="设置板载LED %position| 颜色为 红色值 %red| 绿色值 %green| 蓝色值 %blue"
+    //% weight=107
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
@@ -104,26 +102,10 @@ namespace CooCoo {
      * 设置蜂鸣器
      */
     //% blockId=coocoo_buzzer block="设置蜂鸣器 低音调 %lowTone| 高音调 %highTone| 低节拍 %lowBeat| 高节拍 %highBeat"
+    //% weight=106
     export function setBuzzer(lowTone: number, highTone: number, lowBeat: number, highBeat: number): void {
         buzzer(lowTone, highTone, lowBeat, highBeat);
     }
-
-    // let initialized = false
-    //let initializedMatrix = false
-    //let neoStrip: neopixel.Strip;
-    //let matBuf = pins.createBuffer(17);
-    //let distanceBuf = 0;
-
-    // function initCOOCOO(): void {
-    //     i2cwrite(COOCOO_ADDRESS, MODE1, 0x00)
-    //     setFreq(50);
-    //     for (let idx = 0; idx < 16; idx++) {
-    //         setPwm(idx, 0 ,0);
-    //     }
-    //     initialized = true
-    // }
-
-
 
     function motor(leftspeed: number, rightspeed: number): void {
 
