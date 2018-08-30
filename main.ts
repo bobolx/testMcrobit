@@ -1,34 +1,3 @@
-/**
- * Types of motor direction
- */
-enum RunDirection {
-    //% block="前进"
-    forward,
-    //% block="后退"
-    back
-}
-
-enum TurnDirection {
-    //% block="左转"
-    left,
-    //% block="右转"
-    right
-}
-
-enum LedPosition {
-    //% block="灯1"
-    p1 = 1,
-    //% block="灯2"
-    p2 = 2,
-    //% block="灯3"
-    p3 = 3,
-    //% block="灯4"
-    p4 = 4,
-    //% block="灯5"
-    p5 = 5,
-    //% block="全部"
-    all = 0,
-}
 
 
 //% weight=70 icon="\uf0e7" color=#1B80C4
@@ -42,6 +11,95 @@ namespace CooCoo {
     const CODE1 = 0xff
     const CODE2 = 0x55
     const WRITEMODULE = 0x02
+
+
+    export enum RunDirection {
+        //% block="前进"
+        forward,
+        //% block="后退"
+        back
+    }
+    
+    export enum TurnDirection {
+        //% block="左转"
+        left,
+        //% block="右转"
+        right
+    }
+    
+    export enum LedPosition {
+        //% block="灯1"
+        p1 = 1,
+        //% block="灯2"
+        p2 = 2,
+        //% block="灯3"
+        p3 = 3,
+        //% block="灯4"
+        p4 = 4,
+        //% block="灯5"
+        p5 = 5,
+        //% block="全部"
+        all = 0,
+    }     
+
+
+    function motor(leftspeed: number, rightspeed: number): void {
+
+        let buf = pins.createBuffer(10);
+
+        buf[0] = CODE1;
+        buf[1] = CODE2;
+        buf[2] = 0x07;
+        buf[3] = 0;
+        buf[4] = WRITEMODULE;
+        buf[5] = 0x05;
+        buf[6] = leftspeed & 0xff;
+        buf[7] = (leftspeed >> 8) & 0xff;
+        buf[8] = rightspeed & 0xff;
+        buf[9] = (rightspeed >> 8) & 0xff;
+        
+        pins.i2cWriteBuffer(COOCOO_ADDRESS, buf);
+    }
+
+    function led(position: number, red: number, green: number, blue: number): void {
+
+        let buf = pins.createBuffer(12);
+
+        buf[0] = CODE1;
+        buf[1] = CODE2;
+        buf[2] = 0x09;
+        buf[3] = 0;
+        buf[4] = WRITEMODULE;
+        buf[5] = 0x08;
+        buf[6] = 0;
+        buf[7] = 0;
+        buf[8] = position;
+        buf[9] = red;
+        buf[10] = green;
+        buf[11] = blue;
+        
+        pins.i2cWriteBuffer(COOCOO_COLOR_ADDRESS, buf);
+    }
+
+    function buzzer(lowTone: number, highTone: number, lowBeat: number, highBeat: number): void {
+
+        let buf = pins.createBuffer(12);
+
+        buf[0] = CODE1;
+        buf[1] = CODE2;
+        buf[2] = 0x09;
+        buf[3] = 0;
+        buf[4] = WRITEMODULE;
+        buf[5] = 0x22;
+        buf[6] = 0;
+        buf[7] = 0;
+        buf[8] = lowTone&0xff;
+        buf[9] = highTone&0xff;
+        buf[10] = lowBeat&0xff;
+        buf[11] = highBeat&0xff;
+            
+        pins.i2cWriteBuffer(COOCOO_BUZZER_ADDRESS, buf);
+    }
     
 
     /**
@@ -107,62 +165,6 @@ namespace CooCoo {
         buzzer(lowTone, highTone, lowBeat, highBeat);
     }
 
-    function motor(leftspeed: number, rightspeed: number): void {
-
-        let buf = pins.createBuffer(10);
-
-        buf[0] = CODE1;
-        buf[1] = CODE2;
-        buf[2] = 0x07;
-        buf[3] = 0;
-        buf[4] = WRITEMODULE;
-        buf[5] = 0x05;
-        buf[6] = leftspeed & 0xff;
-        buf[7] = (leftspeed >> 8) & 0xff;
-        buf[8] = rightspeed & 0xff;
-        buf[9] = (rightspeed >> 8) & 0xff;
-        
-        pins.i2cWriteBuffer(COOCOO_ADDRESS, buf);
-    }
-
-    function led(position: number, red: number, green: number, blue: number): void {
-
-        let buf = pins.createBuffer(12);
-
-        buf[0] = CODE1;
-        buf[1] = CODE2;
-        buf[2] = 0x09;
-        buf[3] = 0;
-        buf[4] = WRITEMODULE;
-        buf[5] = 0x08;
-        buf[6] = 0;
-        buf[7] = 0;
-        buf[8] = position;
-        buf[9] = red;
-        buf[10] = green;
-        buf[11] = blue;
-        
-        pins.i2cWriteBuffer(COOCOO_COLOR_ADDRESS, buf);
-    }
-
-    function buzzer(lowTone: number, highTone: number, lowBeat: number, highBeat: number): void {
-
-        let buf = pins.createBuffer(12);
-
-        buf[0] = CODE1;
-        buf[1] = CODE2;
-        buf[2] = 0x09;
-        buf[3] = 0;
-        buf[4] = WRITEMODULE;
-        buf[5] = 0x22;
-        buf[6] = 0;
-        buf[7] = 0;
-        buf[8] = lowTone&0xff;
-        buf[9] = highTone&0xff;
-        buf[10] = lowBeat&0xff;
-        buf[11] = highBeat&0xff;
-            
-        pins.i2cWriteBuffer(COOCOO_BUZZER_ADDRESS, buf);
-    }
+    
 
 }
