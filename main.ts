@@ -35,7 +35,7 @@ enum LedPosition {
  * 设置电机按方向移动或停止
  */
 //% weight=70 icon="\uf0e7" color=#1B80C4
-namespace Motor {
+namespace CooCoo {
     //microbit与coocoo的点击使用哪个pin连接的，相当于地址，这个需要确定是什么
     const COOCOO_ADDRESS = 0x40
     //目前不确定颜色的地址是什么
@@ -44,7 +44,6 @@ namespace Motor {
     const COOCOO_BUZZER_ADDRESS = 0x40
     const CODE1 = 0xff
     const CODE2 = 0x55
-    const READMODULE = 0x01
     const WRITEMODULE = 0x02
     
 
@@ -82,7 +81,7 @@ namespace Motor {
     /**
      * 设置双电机
      */
-    //% blockId=coocoo_double_motor block="左电机 速度 %leftSpeed 右电机 速度 %rightSpeed"
+    //% blockId=coocoo_double_motor block="左电机 速度 %leftSpeed| 右电机 速度 %rightSpeed"
     //% weight=110
     //% leftSpeed.min=-255 leftSpeed.max=255
     //% rightSpeed.min=-255 rightSpeed.max=255
@@ -93,7 +92,7 @@ namespace Motor {
     /**
      * 设置LED 选择颜色
      */
-    //% block="设置板载LED %position| 颜色为 红色值 %red| 绿色值 %green| 蓝色值 %blue"
+    //% blockId=coocoo_color block="设置板载LED %position| 颜色为 红色值 %red| 绿色值 %green| 蓝色值 %blue"
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
@@ -104,7 +103,7 @@ namespace Motor {
     /**
      * 设置蜂鸣器
      */
-    //% block="设置蜂鸣器 低音调 %lowTone| 高音调 %highTone| 低节拍 %lowBeat| 高节拍 %highBeat"
+    //% blockId=coocoo_buzzer block="设置蜂鸣器 低音调 %lowTone| 高音调 %highTone| 低节拍 %lowBeat| 高节拍 %highBeat"
     export function setBuzzer(lowTone: number, highTone: number, lowBeat: number, highBeat: number): void {
         buzzer(lowTone, highTone, lowBeat, highBeat);
     }
