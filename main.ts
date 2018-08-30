@@ -97,7 +97,7 @@ namespace Motor {
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
-    export function setLed(position: LedPosition, red: number, green: number, blue: number) {
+    export function setLed(position: LedPosition, red: number, green: number, blue: number): void {
         led(position, red, green,blue);
     }
 
@@ -105,7 +105,7 @@ namespace Motor {
      * 设置蜂鸣器
      */
     //% block="设置蜂鸣器 低音调 %lowTone| 高音调 %highTone| 低节拍 %lowBeat| 高节拍 %highBeat"
-    export function setBuzzer(lowTone: number, highTone: number, lowBeat: number, highBeat: number) {
+    export function setBuzzer(lowTone: number, highTone: number, lowBeat: number, highBeat: number): void {
         buzzer(lowTone, highTone, lowBeat, highBeat);
     }
 
