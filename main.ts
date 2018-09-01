@@ -5,9 +5,9 @@ namespace CooCoo {
     
     export enum MotorRotation {
         //% block="正转"
-        positive,
+        zheng,
         //% block="反转"
-        reverse
+        fan
     }
     
     export enum MotorDirection {
@@ -25,7 +25,7 @@ namespace CooCoo {
     //% weight=108
     export function motorRun(direction: MotorDirection, rotation: MotorRotation, speed: number): void {
         let rota = 1;
-        if(rotation == MotorRotation.reverse){
+        if(rotation == MotorRotation.fan){
             rota = 0;
         }
         if(direction == MotorDirection.left){
