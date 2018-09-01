@@ -5,9 +5,9 @@ namespace CooCoo {
     
     export enum MotorRotation {
         //% block="正转"
-        positive = 1,
+        positive,
         //% block="反转"
-        reverse = 0
+        reverse
     }
     
     export enum MotorDirection {
@@ -17,8 +17,6 @@ namespace CooCoo {
         right
     }
 
-
-
     /**
      * 设置电机
      */
@@ -26,13 +24,17 @@ namespace CooCoo {
     //% speed.min=0 speed.max=255
     //% weight=108
     export function motorRun(direction: MotorDirection, rotation: MotorRotation, speed: number): void {
+        let rota = 1;
+        if(rotation = MotorRotation.reverse){
+            rota = 0;
+        }
         if(direction = MotorDirection.left){
             pins.analogWritePin(AnalogPin.P1, speed);
-            pins.digitalWritePin(DigitalPin.P8, rotation);
+            pins.digitalWritePin(DigitalPin.P8, rota);
         }
         if(direction = MotorDirection.right){
             pins.analogWritePin(AnalogPin.P15, speed);
-            pins.digitalWritePin(DigitalPin.P12, rotation);
+            pins.digitalWritePin(DigitalPin.P12, rota);
         }
     }
 
