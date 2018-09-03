@@ -13,7 +13,7 @@ enum MotorDirection {
 }
 
 //% weight=70 icon="\uf0e7" color=#1B80C4
-namespace CooCoo {
+namespace CooCooTEST {
     
     /**
      * 设置电机
