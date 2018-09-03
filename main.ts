@@ -1,22 +1,20 @@
+enum MotorRotation {
+    //% block="正转"
+    zheng,
+    //% block="反转"
+    fan
+}
 
+enum MotorDirection {
+    //% block="左侧"
+    left,
+    //% block="右侧"
+    right
+}
 
 //% weight=70 icon="\uf0e7" color=#1B80C4
 namespace CooCoo {
     
-    export enum MotorRotation {
-        //% block="正转"
-        zheng,
-        //% block="反转"
-        fan
-    }
-    
-    export enum MotorDirection {
-        //% block="左侧"
-        left,
-        //% block="右侧"
-        right
-    }
-
     /**
      * 设置电机
      */
